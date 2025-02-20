@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserListComponent } from './user-list.component';
 import { UserService } from '../user.service';
 import { of } from 'rxjs';
+import { By } from '@angular/platform-browser';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -40,5 +41,18 @@ describe('UserListComponent', () => {
   it('should retrieves users from the UerService on init', () => {
     fixture.detectChanges();                                    // start the life cycle hook ngOnInit and starts data binding
     expect(userServiceSpy).toHaveBeenCalled();        // we use userServiceSpy to check if getUsers() is called from our UserListComponent
+  })
+
+  // unit test for when we clicked on button, if this is button gets clicked, does the getUsers() method on the service will called
+  it('should retrieves users from the UerService when the refresh button is clicked', () => {
+    // 1. start lifecycle
+    fixture.detectChanges();
+
+    userServiceSpy.calls.reset();
+
+    const button = fixture.debugElement.query(By.css('button'));          // html button
+    button.triggerEventHandler('click', null);
+
+    expect(userServiceSpy).toHaveBeenCalled();
   })
 });
