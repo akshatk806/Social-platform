@@ -13,7 +13,7 @@ export class UserService {
 
   constructor() { }
 
-  getUsers(): Observable<object> {
+  getUsers(): Observable<object[]> {
     return of(this.users);                           
   } 
   // 'of' creates an obserable
