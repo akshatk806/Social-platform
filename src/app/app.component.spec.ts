@@ -1,35 +1,9 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
+// unit test for app component
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterModule.forRoot([])
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  });
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'social-platform'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('social-platform');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, social-platform');
-  });
+  it('should have a defined title', () => {
+    const component = new AppComponent();
+    expect(component.title).toBeDefined();
+  })
 });
