@@ -34,4 +34,11 @@ describe('UserListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  // components itself get some users from service
+  it('should retrieves users from the UerService on init', () => {
+    fixture.detectChanges();                                    // start the life cycle hook ngOnInit and starts data binding
+    expect(userServiceSpy).toHaveBeenCalled();        // we use userServiceSpy to check if getUsers() is called from our UserListComponent
+  })
 });
